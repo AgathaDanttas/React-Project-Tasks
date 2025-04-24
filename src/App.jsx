@@ -26,16 +26,23 @@ function App() {
     },
   ]);
 
-  //Essa função é chamada quando essa Tarefa for
+  //Essa função é chamada quando essa Tarefa for marcada como concluída
   function okTarefas(tarefasId) {
     const newTarefas = tarefas.map((tarefas) => {
+      //Preciso atualizar a tarefa
       if (tarefas.id === tarefasId) {
         return { ...tarefas, isCompleted: !tarefas.isCompleted };
       }
-
+      //Não preciso atualizar a tarefa
       return tarefas;
     });
 
+    setTarefas(newTarefas);
+  }
+
+  //Essa Função Deleta as Tarefas
+  function onDeleteTarefasClick(tarefasId) {
+    const newTarefas = tarefas.filter (terefas => tarefas.id !== tarefasId)
     setTarefas(newTarefas);
   }
 
@@ -49,7 +56,10 @@ function App() {
 
           <AddTarefas />
 
-          <Tarefas tarefas={tarefas} okTarefas={okTarefas} />
+          <Tarefas tarefas={tarefas}
+            okTarefas={okTarefas}
+            onDeleteTarefasClick={onDeleteTarefasClick}
+          />
         </div>
       </div>
     </>

@@ -1,3 +1,6 @@
+import { TrashIcon } from "lucide-react";
+import { Trash2 } from "lucide-react";
+import { DeleteIcon } from "lucide-react";
 import { ChevronRightIcon } from "lucide-react";
 
 function Tarefas(props) {
@@ -9,13 +12,17 @@ function Tarefas(props) {
           <li key={tarefas.id} className="flex gap-2">
             <button
               onClick={() => props.okTarefas(tarefas.id)}
-              className="bg-slate-400 text-left w-full text-white p-2 rounded-md"
-            >
+              className={`bg-slate-400 text-left w-full text-white p-2 rounded-md ${tarefas.isCompleted && "line-through"}`}>  
               {tarefas.title}
-              {tarefas.isCompleted ? "Complete" : "Incomplete"}
             </button>
+
             <button className="bg-slate-400 p-2 rounded-md text-white">
               <ChevronRightIcon />
+            </button>
+            <button
+              onDeleteTarefasClick={() => props.onDeleteTarefasClick}
+              className="bg-slate-400 p-2 rounded-md text-white">
+              <TrashIcon/>
             </button>
         
           </li>
