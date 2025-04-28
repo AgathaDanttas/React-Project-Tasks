@@ -46,6 +46,20 @@ function App() {
     setTarefas(newTarefas);
   }
 
+  //função add tarefas
+  function onAddTarefasEnviar(title,description) {
+    const newTarefas = {
+      id: tarefas.length + 1,
+      title: title,
+      description: description,
+      isCompleted: false
+    }
+
+    //a lista vai ter tudo que tem anteriomente, e a nova tarefa
+    setTarefas ([...tarefas, newTarefas])
+  }
+
+
   return (
     <>
       <div className="w-screen h-screen bg-slate-500 flex justify-center p-6">
@@ -56,7 +70,7 @@ function App() {
           </h1>
 
 
-          <AddTarefas />
+          <AddTarefas onAddTarefasEnviar={onAddTarefasEnviar} />
           <Tarefas tarefas={tarefas}
             okTarefas={okTarefas}
             onDeleteTarefasClick={onDeleteTarefasClick}
