@@ -17,6 +17,10 @@ function AddTarefas({ onAddTarefasEnviar }) {
             />
             
             <button onClick={() => {
+                //verificando se o título e a descrição estão preenchidos
+                if (!title.trim() && !description.trim()) {
+                    return alert("Prencha todos os campos.");
+                }
                 onAddTarefasEnviar(title, description)
                 setTitle("")
                 setDescription("")
