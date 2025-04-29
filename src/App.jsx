@@ -2,6 +2,7 @@ import "./index.css";
 import { useState } from "react";
 import Tarefas from "./components/Tarefas";
 import AddTarefas from "./components/AddTarefas";
+import { v4 } from 'uuid';
 
 function App() {
   const [tarefas, setTarefas] = useState([
@@ -49,7 +50,7 @@ function App() {
   //função add tarefas
   function onAddTarefasEnviar(title,description) {
     const newTarefas = {
-      id: tarefas.length + 1,
+      id: v4(),
       title: title,
       description: description,
       isCompleted: false
@@ -70,8 +71,11 @@ function App() {
           </h1>
 
 
-          <AddTarefas onAddTarefasEnviar={onAddTarefasEnviar} />
-          <Tarefas tarefas={tarefas}
+          <AddTarefas
+            onAddTarefasEnviar={onAddTarefasEnviar}
+          />
+          <Tarefas
+            tarefas={tarefas}
             okTarefas={okTarefas}
             onDeleteTarefasClick={onDeleteTarefasClick}
           />
