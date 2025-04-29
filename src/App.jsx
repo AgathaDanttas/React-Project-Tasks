@@ -2,7 +2,7 @@ import "./index.css";
 import { useState } from "react";
 import Tarefas from "./components/Tarefas";
 import AddTarefas from "./components/AddTarefas";
-import { v4 } from 'uuid';
+import { v4 } from 'uuid'//gera um novo ID
 
 function App() {
   const [tarefas, setTarefas] = useState([
