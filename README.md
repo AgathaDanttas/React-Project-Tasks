@@ -42,7 +42,7 @@ Abra o navegador e acesse:
 
 ---
 
-##🔧 Funcionalidades Futuras
+## 🔧 Funcionalidades Futuras
 🖊️ Edição de tarefas
 
 🔒 Tela de login
