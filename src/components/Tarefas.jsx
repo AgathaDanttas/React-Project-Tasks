@@ -1,7 +1,17 @@
 import { TrashIcon } from "lucide-react";
 import { ChevronRightIcon } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
-function Tarefas({tarefas,okTarefas,onDeleteTarefasClick}) {
+function Tarefas({ tarefas, okTarefas, onDeleteTarefasClick }) {
+  const navigate = useNavigate();
+
+  function onSeeDetalhesClick(tarefa) {
+    const query = new URLSearchParams();
+    query.set("title", tarefa.title);
+    query.set("description", tarefa.description);
+
+    navigate(`/tarefas?${query.toString()}`);
+  }
   return (
     <>
       <ul className="space-y-4 p-6 bg-slate-200 rounded-md shadow">
@@ -18,7 +28,10 @@ function Tarefas({tarefas,okTarefas,onDeleteTarefasClick}) {
             </button>
 
             {/* Botão de ação futura (Chevron) */}
-            <button className="bg-slate-400 p-2 rounded-md text-white">
+            <button
+              onClick={() => onSeeDetalhesClick(tarefa)}
+              className="bg-slate-400 p-2 rounded-md text-white"
+            >
               <ChevronRightIcon />
             </button>
 

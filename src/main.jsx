@@ -8,13 +8,12 @@ import TarefasPages from "./pages/TarefasPages.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App/>
+    element: <App />,
   },
   {
-    path: "/Tarefas",
-    element:<TarefasPages/>,
+    path: "/tarefas",
+    element: <TarefasPages />,
   },
-
 ]);
 
 createRoot(document.getElementById("root")).render(
