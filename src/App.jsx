@@ -3,29 +3,18 @@ import { useState } from "react";
 import Tarefas from "./components/Tarefas";
 import AddTarefas from "./components/AddTarefas";
 import { v4 } from 'uuid'//gera um novo ID
+import { useEffect } from "react";
 
 function App() {
-  const [tarefas, setTarefas] = useState([
-    {
-      id: 1,
-      title: "Estudar Vite",
-      description:
-        "Estudar Programação para se tornar desenvolvedor full stack",
-      isCompleted: false,
-    },
-    {
-      id: 2,
-      title: "Estudar Props React",
-      description: "Estudar Programação Propriedades do React",
-      isCompleted: false,
-    },
-    {
-      id: 3,
-      title: "Estudar useState",
-      description: "Estudar Estado/State REact",
-      isCompleted: false,
-    },
-  ]);
+  const [tarefas, setTarefas] = useState(
+    JSON.parse(localStorage.getItem("tarefasKey")) || []
+  );
+
+  //Essa função Cria um efeito quando algo se "altera", nesse caso sempre que o usuario adicionar uma tarefa vai aver um salvamento do navegador
+  useEffect(() => { 
+    localStorage.setItem("tarefasKey", JSON.stringify(tarefas) );
+    console.log("Tarefas foi alterada");
+  }, [tarefas]);
 
   //Essa função é chamada quando essa Tarefa for marcada como concluída
   function okTarefas(tarefasId) {
